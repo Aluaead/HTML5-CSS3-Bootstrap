@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<form action="#" method="get">
+			
+			<!--数值输入文本框-->
+			 数量：<input type="number" name="demoNum" min="1" max="100" step="2" />
+			<!--外观和text文本框相同，但不能输入数值以外的文字，否则提交时将内容作为空白进行提交。
+				name:用来标识表单提交时的key值
+			-->
+			
+			<!--email类型-->
+			<input type="email" name="email" placeholder="请输入邮箱" />
+			<!--专门用来输入email地址。当表单提交时，会自动校验是否符合邮箱的正则表达式，但不检验email地址是否存在。
+				placeholder:提示信息
+			-->
+			
+			<!--url文本框-->
+			<input type="url" placeholder="输入正确的网址" />
+			
+			<!--tel类型-->
+			<input type="tel" placeholder="请输入电话" name="p" />
+			
+			<!--滑动条输入文本框-->
+			<input type="range" name="rdemo" id="rdemo" value="0" min="0" max="50" step="5" />
+			
+			<!--日期时间输入文本框-->
+			<input type="date" name="datedemo" id="datedemo" />
+			<!--date类型的input元素以日历的形式方便用户输入,还有其他的type:time,datetime-local,month,week,datetime-->
+			
+			<!--颜色选择器-->
+			<input type="color" name="col" />
+			<!--color类型的input元素用来选取颜色,其提供了一个颜色选择器-->
+			
+			<!--search类型-->
+			<input type="search" name="movie" />
+			<!--search类型用于搜索域-->
+			
+			金庸武侠小说中的武功及招式: <input type="search" autocomplete="on" name="gongfu" list="names" results/>
+			<datalist id="names">
+				<option>亢龙有悔</option>
+				<option>飞龙在天</option>
+				<option>神龙摆尾</option>
+				<option>弹指神通</option>
+				<option>九阴真经</option>
+			</datalist>
+			
+			<input type="submit" value="提交" />
+		
+		</form>
+		<form id="testform" method="post" action="form.asp">
+			姓名: <input type="text" name="name1" />
+				 <input type="submit" value="提交" />
+		</form>
+		自我介绍:<textarea name="area1" form="testform"></textarea>
+		
+	</body>
+</html>

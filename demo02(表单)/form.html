@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人信息</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	</head>
+	<body>
+		<form action="#" method="get">
+			<h2>请填写个人信息</h2>
+			<fieldset class="Base">
+				<legend class="txt">基本信息</legend>
+				
+				<div>姓名: <input type="text" placeholder="请输入姓名" /><span class="IM">&nbsp;*</span></div>
+				年龄: <input type="text" name="age" id="age" value="20"/>
+			</fieldset>
+			<fieldset class="Base">
+				<legend class="txt">你想在哪里收到邮件?</legend>
+				邮箱<input type="text" name="email" placeholder="请输入邮箱" autocomplete="on" list="emails" id="einput" />*
+				<datalist id="emails">
+					<option>@qq.com</option>
+					<option>@163.com</option>
+					<option>@gmail.com</option>
+					<option>@yahoo.com</option>
+					<option>@126.com</option>
+				</datalist>
+			</datalist>
+			</fieldset>
+			<fieldset class="Base">
+				<legend class="txt">收入情况</legend>
+				
+				<div>月收入:
+					<select name="salary">
+						<option>5k</option>
+						<option>10k</option>
+						<option>15k</option>
+						<option selected="selected">20k+</option>
+					</select>
+				</div>
+				
+				银行卡: <input type="text" />
+				有效期: <input type="date" />
+			</fieldset>
+			<fieldset class="Base">
+				<legend class="txt">选取提交的文件</legend>
+				文件: <input type="file" />
+			</fieldset>
+			
+			<div class="sub">
+				<input type="submit" value="提交"/>
+			</div>
+		</form>
+		<script type="text/javascript">
+			var einput = document.getElementById('einput');
+			var emails = document.getElementById('emails');
+			var options = emails.getElementsByTagName('option');
+			var initValue = [];
+			for(var i = 0;i < options.length;i++) {
+				initValue[i] = options[i].value;
+			}
+			einput.onkeyup = function(e){
+	//			console.log(e.keyCode);
+				if(/@/.test(einput.value)) {
+					emails.style.display = "none";
+				}else{
+					for(var i = 0;i < options.length;i++) {
+						options[i].value = initValue[i];
+						options[i].value = einput.value + options[i].value;
+					}
+				}
+			}
+
+
+		</script>
+	</body>
+</html>
