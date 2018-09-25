@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				if(!window.localStorage){
+				alert("你的浏览器不支持LocalStorage，请你更新浏览器");	
+			}
+			//localStorage.setItem("sticky", "first set item");
+			 localStorage['sticky2'] = "second set Item";
+			//alert(localStorage.getItem("sticky"));
+			 alert(localStorage['sticky2']);
+			}
+		</script>
+		
+	</body>
+</html>

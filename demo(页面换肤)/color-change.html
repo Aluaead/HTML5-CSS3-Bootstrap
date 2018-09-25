@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>页面换肤</title>
+		<link rel="icon" href="./img/snowflake.png" />
+		<style>
+			body{
+				/*background-color:#FFF3A5;*/
+				background-color:#FFF5EE;
+			}
+			fieldset{
+				border:2px solid #CDC9C9;
+				background-color:#fff;
+			}
+			legend{
+				color: #DD0000;
+				font-size:24px;
+				font-weight: bold;
+				background-color:#fff;
+			}
+			#bord{
+				float: left;
+				border:1px solid #CDC9C9;
+				width:100%;
+			}
+			.contents{
+				float: left;
+				margin:10px;
+				width:20px;
+				height:20px;
+				cursor: pointer;
+			}
+		</style>
+		<script>
+			window.onload = function(){
+				var contents = document.getElementsByClassName('contents');
+				var body = document.getElementsByTagName('body')[0];
+				if(localStorage.getItem("bgcolor")) {
+					body.style.backgroundColor = localStorage.getItem("bgcolor");
+					let color = localStorage.getItem("bgcolor");
+					for(let i = 0;i<contents.length;i++) {
+						if(contents[i].style.backgroundColor === color) contents[i].style.marginTop = "5px";
+					}
+				}
+//				console.log(contents);
+				for(let i = 0; i < contents.length; i++){
+					contents[i].onclick = function(){
+//						console.log(contents[i].style.backgroundColor);
+//						console.log(body.style.backgroundColor);
+						for(let j = 0;j < contents.length; j++) {
+							contents[j].style.marginTop = "10px";
+						}
+						contents[i].style.marginTop = "5px";
+						localStorage.setItem("bgcolor",contents[i].style.backgroundColor);
+						body.style.backgroundColor = localStorage.getItem("bgcolor");
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<fieldset>
+			<legend>页面换肤</legend>
+			<div id="bord">
+				<div class="contents" style="background-color: red;"></div>
+				<div class="contents" style="background-color: black;"></div>
+				<div class="contents" style="background-color: blue;"></div>
+				<div class="contents" style="background-color: orange;"></div>
+				<div class="contents" style="background-color: pink;"></div>
+				<div class="contents" style="background-color: grey;"></div>
+			</div>
+		</fieldset>
+	</body>
+</html>
