@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	选择文件：<input type="file" id="file" multiple size="80">
+	<input type="button" onclick="ShowfileName" value="文件上传" /> 
+	<br>
+	<input type="button" onclick="ShowfileType" value='显示文件信息'>
+	文件字节长度：<span id="size"></span><br>
+	文件类型：<span id="type"></span>
+
+
+
+	<script>
+		var file=Document.getElementById('file');
+		function ShowfileName(){
+			for (var i = file.files.length - 1; i >= 0; i--) {
+				filename=file.files[i]
+				alert(filename.name);
+
+			}
+		}
+		function ShowfileType(){
+			var fil=file.files[0];
+			var size=Document.getElementById('size');
+			var type=Document.getElementById('type');
+			size.innerHTML=fil.size;
+			type.innerHTML=fil.type;
+		}
+	</script>
+</html>
