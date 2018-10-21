@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" href="../img/snowflake.png" />
+		<title>钟表</title>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			function draw(){
+				var canvas = document.getElementById("canvas");
+				var context = canvas.getContext("2d");
+				canvas.height = canvas.height;
+				// 画圆
+				context.beginPath();
+				context.arc(300,300,250,0,2*Math.PI,false);
+				context.lineWidth = 10;
+				context.strokeStyle = "black";
+				context.closePath();
+				context.stroke();
+				
+				// 圆心
+				context.beginPath();
+				context.arc(300,300,5,0,2*Math.PI,false);
+				context.fillStyle = "#000000";
+				context.fill();
+				context.closePath();
+				// 坐标轴平移和旋转
+				context.translate(300,300);
+				context.rotate(-90/180*Math.PI);
+				
+				// 小刻度
+				for(let i=0;i<60;i++){
+					context.beginPath();
+					context.rotate(6/180*Math.PI);
+					context.lineWidth = 5;
+					context.moveTo(220,0);
+					context.lineTo(230,0);
+					context.closePath();
+					context.strokeStyle = "#000000";
+					context.stroke();
+				}
+
+				// 大刻度
+				for(let i=0;i<12;i++){
+					context.beginPath();
+					context.rotate(30/180*Math.PI);
+					context.lineWidth = 5;
+					context.moveTo(210,0);
+					context.lineTo(230,0);
+					context.closePath();
+					context.strokeStyle = "#cd2626";
+					context.stroke();
+				}
+
+				// 数字
+				context.rotate(90/180*Math.PI);
+				context.beginPath();
+				context.fillStyle = "black";
+				context.translate(-10,10);
+				for(var i=12;i>0;i--){
+					context.font = "bold 25px 宋体";
+					context.fillText(i,Math.cos((90-30*i)*Math.PI/180)*190,-Math.sin((90-30*i)*Math.PI/180)*190,24);
+					
+				}
+				context.closePath();
+				context.translate(10,-10);
+				
+	
+				// 获取日期
+				var date = new Date();
+				var hour = date.getHours();
+				var minute = date.getMinutes();
+				var second = date.getSeconds();
+				context.save();
+				context.beginPath();
+				context.rotate(((30*hour+0.5*minute+0.0083*second))/180*Math.PI);
+				context.lineWidth = 8;
+				context.moveTo(0,0);
+				context.lineTo(0,-150);
+				context.closePath();
+				context.strokeStyle = "#8E388E";
+				context.stroke();
+
+				// 分针
+				context.restore();
+				context.save();
+				context.beginPath();
+				context.rotate(((6*minute+0.1*second))/180*Math.PI);
+				context.lineWidth = 4;
+				context.moveTo(0,0);
+				context.lineTo(0,-180);
+				context.closePath();
+				context.strokeStyle = "#FF82AB";
+				context.stroke();
+
+				//秒针
+				context.restore();
+				context.beginPath();
+				context.rotate(((6*second))/180*Math.PI);
+				context.lineWidth = 3;
+				context.moveTo(0,0);
+				context.lineTo(0,-190);
+				context.closePath();
+				context.strokeStyle = "#CD3700";
+				context.stroke();
+				
+				// 秒针上的小圆圈
+				context.beginPath();
+				context.lineWidth=1;
+				context.arc(0,-170,5,0,2*Math.PI,false);
+				context.fillStyle="#CD3700";
+				context.stroke();
+				context.fill();
+				context.closePath();
+				context.beginPath();
+				context.lineWidth=1;
+				context.arc(0,-170,3,0,2*Math.PI,false);
+				context.fillStyle="#000000";
+				context.stroke();
+				context.fill();
+				context.restore();
+				context.closePath();
+			}
+			setInterval(draw,1000);
+		</script>
+	</body>
+</html>
