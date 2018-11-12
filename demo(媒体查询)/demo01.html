@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		.container{
+			width: 1200px;
+			height: 400px;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			flex-wrap: wrap;
+		}
+		.left{
+			width: 300px;
+			background: yellow;
+		}
+		.content{
+			width: 550px;
+			background: orange;
+		}
+		.right{
+			width: 300px;
+			background: blue;
+		}
+		@media screen and (max-width: 750px){
+			.container{
+				width: 500px;
+				display: flex;
+				flex-direction: column;
+			}
+			.left,.content,.right{
+				width: 300px;
+			}
+
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="container">
+		<div class="left"></div>
+		<div class="content"></div>
+		<div class="right"></div>
+	</div>
+
+</body>
+</html>
